@@ -30,7 +30,6 @@ const userLogin = async (_, args, context, info) => {
   //info contains information about the execution state of the query which should only be used in advanced cases.
   const { email, password } = args;
   try {
-    console.log(args);
     const user = await User.findOne({ email }).select('+password');
 
     if (!user) {
@@ -45,6 +44,13 @@ const userLogin = async (_, args, context, info) => {
     }
 
     const token = await user.generateAuthToken();
+
+    // save to cookie
+    context.res.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    });
+   
     return { ...user._doc, token };
   } catch (error) {
     console.log(error);
