@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
 userSchema.pre('save', async function (next) {
   const user = this;
 
-  // const salt = await bcrypt.genSalt(10);
+  const salt = await bcrypt.genSalt(10, 'a');
   // if (user.isModified('password')) {
   //   user.password = await bcrypt.hash(user.password, salt);
   // }
@@ -39,10 +39,10 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// compare password
-userSchema.methods.comparePassword = async function (enteredPassword) {
+// compare password with hashed password
+userSchema.methods.comparePassword = async function (password) {
   const user = this;
-  const isMatch = await bcrypt.compare(enteredPassword, user.password);
+  const isMatch = await bcrypt.compareSync(password, user.password);
   return isMatch;
 };
 

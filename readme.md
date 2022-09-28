@@ -21,8 +21,9 @@ mutation ($username: String!, $email: String!, $password: String!) {
 
 ```graphql
 mutation ($email: String!, $password: String!) {
-  userSignIn(email: "", password: "") {
-    token
+  userLogin(email: "test@gmail.com", password: "Bassguitar") {
+    username
+    email
   }
 }
 ```

@@ -23,7 +23,7 @@ const userSignUp = async (parent, args, context, info) => {
   }
 };
 
-const userLogin = async (parent, args, context, info) => {
+const userLogin = async (_, args, context, info) => {
   //parent is the parent object, which in this case is the Query object.
   //args is an object that contains all of the arguments that were passed into the field.
   //context is an object shared by all resolvers in a particular query, and is used to contain per-request state, including authentication information, dataloader instances, and anything else that should be taken into account when resolving the query.
