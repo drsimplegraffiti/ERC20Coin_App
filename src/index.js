@@ -4,11 +4,12 @@ const connectDB = require('./config/db');
 
 connectDB();
 
-const typeDefs = require('./types');
+const { userTypeDefs, coinTypeDefs } = require('./types');
 const resolvers = require('./resolvers');
 
+
 const server = new ApolloServer({
-  typeDefs,
+  typeDefs: [userTypeDefs, coinTypeDefs],
   resolvers,
 });
 

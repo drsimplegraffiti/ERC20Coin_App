@@ -1,5 +1,33 @@
 #### Install packages
-> npm install apollo-server graphql nodemon mongoose
+
+> npm install apollo-server graphql nodemon mongoose jsonwebtoken bcryptjs
+
+---
+
+#### Auth
+
+#### User SignUp
+
+```graphql
+mutation ($username: String!, $email: String!, $password: String!) {
+  userSignUp(username: "test", email: "test@gmail.com", password: "1234") {
+    username
+    email
+  }
+}
+```
+
+#### User SignIn
+
+```graphql
+mutation ($email: String!, $password: String!) {
+  userSignIn(email: "", password: "") {
+    token
+  }
+}
+```
+
+---
 
 #### Get all coins
 
@@ -116,8 +144,6 @@ mutation ($updateCoinId: ID!) {
   }
 }
 ```
-
-
 
 ##### Get all coins
 

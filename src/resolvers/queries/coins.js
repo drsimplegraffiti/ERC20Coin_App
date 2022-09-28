@@ -3,6 +3,7 @@ const Coin = require('../../models/coins.model'); // C:\Users\user\Desktop\eth_a
 // get all coins
 const coins = async () => {
   const coins = await Coin.find();
+  console.log(coins);
   return coins;
 };
 
