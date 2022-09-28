@@ -1,3 +1,6 @@
+#### Install packages
+> npm install apollo-server graphql nodemon mongoose
+
 #### Get all coins
 
 ```graphql
